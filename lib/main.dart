@@ -22,19 +22,24 @@ void main() {
   );
 }
 
-// ignore: use_key_in_widget_constructors
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceeNumber = 2;
   @override
   Widget build(BuildContext context) {
-    var leftDiceeNumber = '2';
     return Center(
       child: Row(
         children: <Widget>[
           Expanded(
             child: TextButton(
               onPressed: () {
-                // ignore: avoid_print
-                print('hi TextButton');
+                setState(() {
+                  leftDiceeNumber = 4;
+                });
               },
               child: Image.asset('image/dice$leftDiceeNumber.png'),
             ),
@@ -43,7 +48,7 @@ class DicePage extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 // ignore: avoid_print
-                print('hi TextButton22');
+                print('The right button pressed');
               },
               child: Image.asset('image/dice1.png'),
             ),
