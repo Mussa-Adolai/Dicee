@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 
 void main() {
   return runApp(
@@ -21,21 +22,29 @@ void main() {
   );
 }
 
+// ignore: use_key_in_widget_constructors
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var leftDiceeNumber = '2';
     return Center(
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset('image/dice1.png'),
+            child: TextButton(
+              onPressed: () {
+                // ignore: avoid_print
+                print('hi TextButton');
+              },
+              child: Image.asset('image/dice$leftDiceeNumber.png'),
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            child: TextButton(
+              onPressed: () {
+                // ignore: avoid_print
+                print('hi TextButton22');
+              },
               child: Image.asset('image/dice1.png'),
             ),
           ),
