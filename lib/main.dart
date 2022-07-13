@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 void main() {
-  return runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+  return runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Scaffold(
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.red,
-        appBar: AppBar(
-          centerTitle: true,
-          // ignore: prefer_const_constructors
-          title: Text(
-            'Dicee',
-            // textAlign: TextAlign.center,
+        title: Text(
+          'dicee',
+          style: TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Pacifico',
           ),
-          backgroundColor: Colors.red,
         ),
-        body: DicePage(),
       ),
+      body: DicePage(),
     ),
-  );
+  ));
 }
 
 class DicePage extends StatefulWidget {
@@ -29,7 +30,11 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   int leftDiceeNumber = 1;
-  int rightDiceeNumber = 2;
+  int rightDiceeNumber = 1;
+  changeDiceNumber() {
+    leftDiceeNumber = Random().nextInt(6) + 1;
+    rightDiceeNumber = Random().nextInt(6) + 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +46,7 @@ class _DicePageState extends State<DicePage> {
               onPressed: () {
                 setState(
                   () {
-                    leftDiceeNumber = Random().nextInt(6) + 1;
+                    changeDiceNumber();
                   },
                 );
               },
@@ -53,13 +58,13 @@ class _DicePageState extends State<DicePage> {
               onPressed: () {
                 setState(
                   () {
-                    rightDiceeNumber = Random().nextInt(6) + 1;
+                    changeDiceNumber();
                   },
                 );
               },
               child: Image.asset('image/dice$rightDiceeNumber.png'),
             ),
-          ),
+          )
         ],
       ),
     );
